@@ -66,6 +66,16 @@
     flex-grow: 1;
   }
 
+  @media (max-width: 768px), (max-height: 1080px) {
+    h1 {
+      flex-grow: 0;
+      height: 5dvh !important;
+      font-size: 1rem;
+      flex-shrink: 1;
+      max-height: 5rem;
+    }
+  }
+
   .product {
     background: -webkit-linear-gradient(270deg, navy 30%, gold);
     -webkit-background-clip: text;
