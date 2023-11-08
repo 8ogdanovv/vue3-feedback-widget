@@ -152,13 +152,19 @@
 
 <style>
 .form {
-  width: 33vmax;
-  height: 40dvh !important;
+  width: 60dvw;
+  height: 50dvh !important;
 }
 
 @media (max-width: 768px), (max-height: 1080px) {
   .form {
-    height: 63dvh !important;
+    height: 60dvh !important;
+    min-height: 420px !important;
+    min-width: 250px !important;
+  }
+
+  .v-field__input {
+    max-height: 3rem;
   }
 }
 

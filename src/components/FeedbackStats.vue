@@ -2,7 +2,7 @@
   <div class='flex align-center'>
 
     <v-card
-      class="card-container d-flex flex-column py-3 px-1"
+      class="card-container d-flex flex-column mt-1"
       elevation="10"
     >
       <div class="d-flex justify-center text-h5">
@@ -10,7 +10,7 @@
       </div>
 
       <div class="d-flex align-center flex-column">
-        <div class="text-h2 mt-3">
+        <div class="text-h3 mt-2">
           {{ computedRating }}
           <span class="text-h6 ml-n3">/5</span>
         </div>
@@ -89,13 +89,15 @@
 
 <style>
 .card-container {
-  height: 40dvh !important;
-  width: 33vmax;
+  width: 60dvw;
+  height: 50dvh !important;
 }
 
 @media (max-width: 768px), (max-height: 1080px) {
   .card-container {
-    height: 63dvh !important;
+    height: 60dvh !important;
+    min-height: 385px !important;
+    min-width: 250px !important;
   }
 }
 </style>

@@ -6,7 +6,7 @@
       </span>
       <span>Feedback App</span>
     </h1>
-    <template v-if="!formSubmitted">
+    <template v-if="formSubmitted">
       <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
     </template>
     <template v-else>
@@ -47,7 +47,7 @@
 <style>
   .app {
     width: 100%;
-    height: 95dvh;
+    height: 96dvh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -60,7 +60,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 3rem !important;
+    height: 3rem;
   }
 
   .app > *:not(.v-card) {
@@ -70,13 +70,19 @@
   @media (max-width: 768px), (max-height: 1080px) {
     h1 {
       flex-grow: 0;
-      font-size: 1.5rem;
+      font-size: 1.5rem !important;
+      height: 4.75rem;
       flex-shrink: 1;
       line-height: 2rem;
+      margin-bottom: -2.5rem;
     }
 
     .app {
       justify-content: flex-start;
+    }
+
+    .app > * {
+      transform: scale(0.8);
     }
   }
 

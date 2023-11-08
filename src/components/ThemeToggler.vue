@@ -1,7 +1,7 @@
 <template>
-  <v-btn @click="toggleTheme" class="themeToggler">
+  <span @click="toggleTheme" class="themeToggler">
     {{ themeIcon }}
-  </v-btn>
+  </span>
 </template>
 
 <script setup>
@@ -46,6 +46,16 @@
 @media (max-width: 768px), (max-height: 1080px) {
   .themeToggler {
     bottom: 0 !important;
+
+    right: calc(50% - 1rem);
+
+    font-size: 2rem !important;
+    line-height: 2rem !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
   }
 }
 
