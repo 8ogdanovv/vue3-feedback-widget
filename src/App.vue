@@ -4,16 +4,15 @@
       <span class="product">{{ appTitle }}&nbsp;
         <span class="product-shadow">{{ appTitle }}&nbsp;</span>
       </span>
-
-      Feedback App
+      <span>Feedback App</span>
     </h1>
-    <template v-if="!formSubmitted">
+    <!-- <button @click="() => formSubmitted = !formSubmitted">toggle</button> -->
+    <template v-if="formSubmitted">
       <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
     </template>
     <template v-else>
       <FeedbackStats :feedbackData="feedbackData" />
     </template>
-
     <theme-toggler />
   </div>
 </template>
@@ -54,12 +53,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   h1 {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 3rem !important;
   }
 
   .app > *:not(.v-card) {
@@ -69,10 +71,13 @@
   @media (max-width: 768px), (max-height: 1080px) {
     h1 {
       flex-grow: 0;
-      height: 5dvh !important;
-      font-size: 1rem;
+      font-size: 1.5rem;
       flex-shrink: 1;
-      max-height: 5rem;
+      line-height: 2rem;
+    }
+
+    .app {
+      justify-content: flex-start;
     }
   }
 

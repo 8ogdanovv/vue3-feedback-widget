@@ -2,7 +2,7 @@
   <div class='flex align-center'>
 
     <v-card
-      class="card-container d-flex flex-column py-8 px-4"
+      class="card-container d-flex flex-column py-3 px-1"
       elevation="10"
     >
       <div class="d-flex justify-center text-h5">
@@ -10,7 +10,7 @@
       </div>
 
       <div class="d-flex align-center flex-column">
-        <div class="text-h2 mt-5">
+        <div class="text-h2 mt-3">
           {{ computedRating }}
           <span class="text-h6 ml-n3">/5</span>
         </div>
@@ -19,6 +19,7 @@
           :model-value="computedRating"
           color="yellow-darken-3"
           half-increments
+          readonly="true"
         ></v-rating>
         <div class="px-3">{{ feedbackData.length }} ratings</div>
       </div>
@@ -33,7 +34,7 @@
             :model-value="item.percentage"
             class="mx-n5"
             color="yellow-darken-3"
-            height="20"
+            height="16"
             rounded
           ></v-progress-linear>
   
@@ -88,7 +89,13 @@
 
 <style>
 .card-container {
-  width: 50vmin !important;
-  height: 50vmin !important;
+  height: 40dvh !important;
+  width: 33vmax;
+}
+
+@media (max-width: 768px), (max-height: 1080px) {
+  .card-container {
+    height: 63dvh !important;
+  }
 }
 </style>

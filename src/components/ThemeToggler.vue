@@ -36,11 +36,17 @@
   right: calc(50% - 2rem);
   font-size: 4rem !important;
   line-height: 4rem !important;
-  width: 4rem;
+  width: 4rem !important;
   height: 4rem !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 50% !important;
+}
+
+@media (max-width: 768px), (max-height: 1080px) {
+  .themeToggler {
+    bottom: 0 !important;
+  }
 }
 
 </style>

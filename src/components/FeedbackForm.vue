@@ -32,7 +32,7 @@
       label="Rating"
       :model-value="defaultRatingValue"
       :length="5"
-      :size="50"
+      :size="37"
       hover
       active-color="primary"
       @click.stop="handleRate"
@@ -110,7 +110,7 @@
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
           return true;
         } else {
-          return 'Email should be valid, e.g. mail.example@gmail.com';
+          return 'Email should be valid, e.g. valid.mail@example.com';
         }
       },
       rating(value) {
@@ -135,6 +135,9 @@
     }
 
     const formObject = { ...values }
+    if (formObject.comment == '' || !formObject.comment) {
+      formObject.comment = 'comment'
+    }
     console.log(JSON.stringify(formObject, null, 2))
     // Add a new document in collection "cities"
     const docRef = await addDoc(collection(db, "feedbacks"), formObject);
@@ -149,8 +152,14 @@
 
 <style>
 .form {
-  min-width: 35dvw;
-  height: 50vmin !important;
+  width: 33vmax;
+  height: 40dvh !important;
+}
+
+@media (max-width: 768px), (max-height: 1080px) {
+  .form {
+    height: 63dvh !important;
+  }
 }
 
 .rating {
