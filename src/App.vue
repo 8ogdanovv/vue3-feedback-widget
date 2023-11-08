@@ -6,8 +6,7 @@
       </span>
       <span>Feedback App</span>
     </h1>
-    <!-- <button @click="() => formSubmitted = !formSubmitted">toggle</button> -->
-    <template v-if="formSubmitted">
+    <template v-if="!formSubmitted">
       <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
     </template>
     <template v-else>
