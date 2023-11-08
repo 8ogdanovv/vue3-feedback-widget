@@ -9,15 +9,15 @@
   import { useTheme } from 'vuetify'
 
   const theme = useTheme()
-  let themeIcon = ''
+  const themeIcon = ref('')
 
   function toggleTheme () {
     if (theme.global.current.value.dark) {
       theme.global.name.value = 'light'
-      themeIcon = '🌚'
+      themeIcon.value = '🌚'
     } else {
       theme.global.name.value = 'dark'
-      themeIcon = '🌞'
+      themeIcon.value = '🌞'
     }
   }
 
@@ -29,17 +29,16 @@
 <style>
 
 .themeToggler {
-  display: inline-flex;
-  position: absolute !important;
-  bottom: 5dvh;
+  position: absolute;
+  top: calc(96dvh - 5rem);
   right: calc(50% - 2rem);
-  font-size: 4rem !important;
-  line-height: 4rem !important;
-  width: 4rem !important;
-  height: 4rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border-radius: 50% !important;
+  font-size: 4rem;
+  line-height: 4rem;
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
 }
 
 @media (max-width: 768px), (max-height: 1080px) {
@@ -47,10 +46,10 @@
     top: calc(96dvh - 2rem);
     right: calc(50% - 1rem);
 
-    font-size: 2rem !important;
-    line-height: 2rem !important;
-    width: 2rem !important;
-    height: 2rem !important;
+    font-size: 2rem;
+    line-height: 2rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
 

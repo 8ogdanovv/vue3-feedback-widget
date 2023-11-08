@@ -63,7 +63,7 @@
     height: 3rem;
   }
 
-  .app > *:not(.v-card) {
+  .app > *:not(.v-card, .themeToggler) {
     flex-grow: 1;
   }
 
