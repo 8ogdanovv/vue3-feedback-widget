@@ -21,7 +21,7 @@
   import FeedbackForm from '@/components/FeedbackForm.vue'
   import ThemeToggler from '@/components/ThemeToggler.vue'
 
-  const appTitle = import.meta.env.VITE_TITLE || 'Default Title'
+  const appTitle = import.meta.env.VITE_TITLE || 'Service(-s)'
 
   import { ref, onMounted } from 'vue';
   import { collection, getDocs } from 'firebase/firestore'
