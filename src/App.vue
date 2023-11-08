@@ -6,7 +6,7 @@
       </span>
       <span>Feedback App</span>
     </h1>
-    <template v-if="formSubmitted">
+    <template v-if="!formSubmitted">
       <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
     </template>
     <template v-else>
