@@ -50,6 +50,7 @@
     line-height: 2rem;
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
   }
 }
 

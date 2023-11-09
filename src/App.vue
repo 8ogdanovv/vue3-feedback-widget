@@ -1,10 +1,12 @@
 <template>
   <div class="app">
     <h1>
-      <span class="product">{{ appTitle }}&nbsp;
-        <span class="product-shadow">{{ appTitle }}&nbsp;</span>
-      </span>
-      <span>Feedback App</span>
+      <a href="https://github.com/vadym4che/vue3-feedback-widget" target="_blank" rel="noopener noreferrer">
+        <span class="product">{{ appTitle }}&nbsp;
+          <span class="product-shadow">{{ appTitle }}&nbsp;</span>
+        </span>
+        <span>Feedback App</span>
+      </a>
     </h1>
     <template v-if="!formSubmitted">
       <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
@@ -61,6 +63,14 @@
     align-items: center;
     justify-content: center;
     height: 3rem;
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: inherit;
   }
 
   .app > *:not(.v-card, .themeToggler) {
