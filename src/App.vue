@@ -9,10 +9,10 @@
       </a>
     </h1>
     <template v-if="!formSubmitted">
-      <FeedbackForm :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
+      <feedback-form :feedbackData="feedbackData" @formSubmittedToTrue="handleFormSubmission" />
     </template>
     <template v-else>
-      <FeedbackStats :feedbackData="feedbackData" />
+      <feedback-stats :feedbackData="feedbackData" />
     </template>
     <theme-toggler />
   </div>
@@ -25,7 +25,7 @@
 
   const appTitle = import.meta.env.VITE_TITLE || 'Service(-s)'
 
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue'
   import { collection, getDocs } from 'firebase/firestore'
   import { db } from '@/firebase'
 
@@ -33,16 +33,16 @@
   const feedbackData = ref([]);
 
   onMounted(async () => {
-    const querySnapshot = await getDocs(collection(db, 'feedbacks'));
-    const data = [];
+    const querySnapshot = await getDocs(collection(db, 'feedbacks'))
+    const data = []
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      feedbackData.value.push(doc.data());
-    });
-  });
+      feedbackData.value.push(doc.data())
+    })
+  })
 
   const handleFormSubmission = () => {
-    formSubmitted.value = true;
+    formSubmitted.value = true
   };
 </script>
 

@@ -1,18 +1,12 @@
-:root {}
+:root {
+  --color-text-error: #bd5e6d;
+}
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
 #app {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 0;
   text-align: center;
   display: flex;
   flex-direction: column;
