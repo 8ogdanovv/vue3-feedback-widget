@@ -1,6 +1,10 @@
 <template>
-  <div class="flex align-center">
-    <v-card class="card-container d-flex flex-column mt-1" elevation="10">
+  <div class='flex align-center'>
+
+    <v-card
+      class="card-container d-flex flex-column mt-1"
+      elevation="10"
+    >
       <div class="d-flex justify-center text-h5">
         Rating overview
       </div>
@@ -15,14 +19,17 @@
           :model-value="computedRating"
           color="yellow-darken-3"
           half-increments
-          readonly
+          readonly="true"
         ></v-rating>
-
         <div class="px-3">{{ feedbackData.length }} ratings</div>
       </div>
 
-      <v-list bg-color="transparent" class="d-flex flex-column-reverse" density="compact">
-        <v-list-item v-for="item in ratingDistribution" :key="item.rating">
+      <v-list
+        bg-color="transparent"
+        class="d-flex flex-column-reverse"
+        density="compact"
+      >
+        <v-list-item v-for="(item, i) in ratingDistribution" :key="i">
           <v-progress-linear
             :model-value="item.percentage"
             class="mx-n5"
@@ -38,7 +45,7 @@
 
           <template v-slot:append>
             <div class="rating-values">
-              <span class="d-flex justify-end">{{ item.count }}</span>
+              <span class="d-flex justify-end"> {{ item.count }} </span>
             </div>
           </template>
         </v-list-item>
@@ -48,27 +55,36 @@
 </template>
 
 <script setup>
-import { toRefs, computed } from 'vue';
+  import { toRefs, computed } from 'vue'
 
-const { feedbackData } = toRefs(defineProps({ feedbackData: Array }));
+  const props = defineProps({
+    feedbackData: Array,
+  })
+  const { feedbackData } = toRefs(props);
 
-const computedRating = computed(() => {
-  const totalRatings = feedbackData.value.length;
-  if (totalRatings === 0) return 0;
+  // Compute the average rating from the feedback data
+  const computedRating = computed(() => {
+    const totalRatings = feedbackData.value.length
+    if (totalRatings === 0) return 0
 
-  const totalSum = feedbackData.value.reduce((acc, cur) => acc + Number(cur.rating), 0);
-  return Math.round((totalSum / totalRatings) * 2) / 2;
-});
+    const totalSum = feedbackData.value.reduce((acc, cur) => {
+      return acc + Number(cur.rating)
+    }, 0)
 
-const ratingDistribution = computed(() => {
-  const distribution = Array.from({ length: 5 }, (_, i) => i + 1).map((rating) => {
-    const count = feedbackData.value.filter((item) => item.rating === rating).length;
-    const percentage = (count / feedbackData.value.length) * 100;
-    return { rating, count, percentage };
+    const averageRating = totalSum / totalRatings;
+    return Math.round(averageRating * 2) / 2
+  })
+
+  // Compute the distribution of ratings
+  const ratingDistribution = computed(() => {
+    const distribution = []
+    for (let i = 1; i <= 5; i++) {
+      const count = feedbackData.value.filter((item) => item.rating == i).length
+      const percentage = count / feedbackData.value.length * 100
+      distribution.push({ rating: i, count, percentage })
+    }
+    return distribution
   });
-
-  return distribution;
-});
 </script>
 
 <style>
