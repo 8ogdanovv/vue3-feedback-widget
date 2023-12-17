@@ -15,5 +15,5 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden !important;
-  background: var(--v-theme-background);
+  background: rgb(var(--v-theme-background));
 }
