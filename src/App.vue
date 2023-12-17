@@ -19,31 +19,30 @@
 </template>
 
 <script setup>
-  import FeedbackStats from '@/components/FeedbackStats.vue'
-  import FeedbackForm from '@/components/FeedbackForm.vue'
-  import ThemeToggler from '@/components/ThemeToggler.vue'
+import { ref, onMounted, defineAsyncComponent } from 'vue'
+import FeedbackForm from '@/components/FeedbackForm.vue'
+import ThemeToggler from '@/components/ThemeToggler.vue'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/firebase'
 
-  const appTitle = import.meta.env.VITE_TITLE || 'Service(-s)'
+const FeedbackStats = defineAsyncComponent(() => import('@/components/FeedbackStats.vue'))
+const appTitle = import.meta.env.VITE_TITLE || 'Service(-s)'
 
-  import { ref, onMounted } from 'vue'
-  import { collection, getDocs } from 'firebase/firestore'
-  import { db } from '@/firebase'
+const formSubmitted = ref(false);
+const feedbackData = ref([]);
 
-  const formSubmitted = ref(false);
-  const feedbackData = ref([]);
-
-  onMounted(async () => {
-    const querySnapshot = await getDocs(collection(db, 'feedbacks'))
-    const data = []
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      feedbackData.value.push(doc.data())
-    })
+onMounted(async () => {
+  const querySnapshot = await getDocs(collection(db, 'feedbacks'))
+  const data = []
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    feedbackData.value.push(doc.data())
   })
+})
 
-  const handleFormSubmission = () => {
-    formSubmitted.value = true
-  };
+const handleFormSubmission = () => {
+  formSubmitted.value = true
+};
 </script>
 
 <style>

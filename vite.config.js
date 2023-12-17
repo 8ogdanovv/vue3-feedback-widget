@@ -1,11 +1,14 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vuetify from 'vite-plugin-vuetify';
 import path from 'path';
 
 export default defineConfig(({ command, mode }) => {
-  const isProduction = mode === 'production';
-  const base = isProduction ? '/vue3-feedback-widget/' : '/';
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
+
+  const isProduction = mode === 'production' || command === 'build'
+  const base = isProduction ? process.env.VITE_BASE_URL : '/'
+
 
   return {
     plugins: [
